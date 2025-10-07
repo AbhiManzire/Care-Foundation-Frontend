@@ -5,6 +5,8 @@ import "./globals.css"; // Global styles applied across the app
 // Import NavBar and Footer components
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
+import AuthForm from "@/components/AuthForm";
+import FundraiserForm from "@/components/FundraiserForm";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +32,8 @@ export default function RootLayout({
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body className="min-h-screen flex flex-col">
         {/*  Navigation bar */}
+        <FundraiserForm />
+        {/* <AuthForm />  */}
         <NavBar />
 
         {/*  Page content */}
