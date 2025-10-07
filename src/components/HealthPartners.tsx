@@ -90,10 +90,10 @@ export default function HealthPartners() {
 
               {/* Buttons */}
               <div className="flex gap-4 w-full mt-6">
-                <button className="flex-1 bg-gradient-to-r from-lime-600 to-green-500 text-white py-2 rounded-lg hover:from-green-600 hover:to-green-700 shadow-md transition-all">
+                <button className="flex-1 bg-gradient-to-r from-green-600 to-green-700 text-white py-2 rounded-lg hover:from-green-600 hover:to-green-700 shadow-md transition-all">
                   Book Appointment
                 </button>
-                <button className="flex-1 bg-gradient-to-r from-orange-400 to-red-500 text-white py-2 rounded-lg hover:from-red-600 hover:to-red-700 shadow-md transition-all">
+                <button className="flex-1 bg-gradient-to-r bg-red-400 text-white py-2 rounded-lg hover:from-red-600 hover:to-red-700 shadow-md transition-all">
                   View Map
                 </button>
               </div>

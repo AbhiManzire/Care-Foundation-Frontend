@@ -17,7 +17,6 @@ export default function FundraiserForm() {
     summary: "",
   });
 
-  // ✅ Added proper typing for event
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -25,14 +24,13 @@ export default function FundraiserForm() {
     setFormData({ ...formData, [name]: value });
   };
 
-  // ✅ Added proper typing for form submit
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
   };
 
   return (
-    <section className="bg-gray-50 py-12">
+    <section className="bg-gray-50 py-12 text-gray-500">
       <div className="max-w-4xl mx-auto px-6">
         <h2 className="text-3xl font-semibold text-center text-gray-800 mb-8">
           Start your fundraiser and make a difference today!
@@ -50,7 +48,7 @@ export default function FundraiserForm() {
               placeholder="Full Name"
               value={formData.fullName}
               onChange={handleChange}
-              className="border rounded-lg p-3 w-full"
+              className="border rounded-lg p-3 w-full text-gray-500"
             />
             <input
               type="email"
@@ -58,7 +56,7 @@ export default function FundraiserForm() {
               placeholder="Email Address"
               value={formData.email}
               onChange={handleChange}
-              className="border rounded-lg p-3 w-full"
+              className="border rounded-lg p-3 w-full text-gray-500"
             />
           </div>
 
@@ -69,7 +67,7 @@ export default function FundraiserForm() {
             placeholder="Fundraiser Heading"
             value={formData.heading}
             onChange={handleChange}
-            className="border rounded-lg p-3 w-full"
+            className="border rounded-lg p-3 w-full text-gray-500"
           />
 
           <input
@@ -78,16 +76,16 @@ export default function FundraiserForm() {
             placeholder="Fund Required (in INR)"
             value={formData.fundRequired}
             onChange={handleChange}
-            className="border rounded-lg p-3 w-full"
+            className="border rounded-lg p-3 w-full text-gray-500"
           />
 
           {/* Upload Pictures */}
           <div>
             <label className="block font-medium mb-2">Upload Pictures</label>
             <div className="grid md:grid-cols-3 gap-3">
-              <input type="file" className="border p-2 rounded-lg w-full" />
-              <input type="file" className="border p-2 rounded-lg w-full" />
-              <input type="file" className="border p-2 rounded-lg w-full" />
+              <input type="file" className="border p-2 rounded-lg w-full text-gray-500" />
+              <input type="file" className="border p-2 rounded-lg w-full text-gray-500" />
+              <input type="file" className="border p-2 rounded-lg w-full text-gray-500" />
             </div>
           </div>
 
@@ -99,7 +97,7 @@ export default function FundraiserForm() {
               placeholder="Creator's Name"
               value={formData.creatorName}
               onChange={handleChange}
-              className="border rounded-lg p-3 w-full"
+              className="border rounded-lg p-3 w-full text-gray-500"
             />
             <input
               type="text"
@@ -107,7 +105,7 @@ export default function FundraiserForm() {
               placeholder="Mobile No."
               value={formData.mobile}
               onChange={handleChange}
-              className="border rounded-lg p-3 w-full"
+              className="border rounded-lg p-3 w-full text-gray-500"
             />
           </div>
 
@@ -118,7 +116,7 @@ export default function FundraiserForm() {
               placeholder="City"
               value={formData.city}
               onChange={handleChange}
-              className="border rounded-lg p-3 w-full"
+              className="border rounded-lg p-3 w-full text-gray-500"
             />
             <input
               type="text"
@@ -126,29 +124,28 @@ export default function FundraiserForm() {
               placeholder="State"
               value={formData.state}
               onChange={handleChange}
-              className="border rounded-lg p-3 w-full"
+              className="border rounded-lg p-3 w-full text-gray-500"
             />
           </div>
 
-          {/* ✅ Fixed rows type (number) */}
           <textarea
             name="address"
             placeholder="Address"
             rows={2}
             value={formData.address}
             onChange={handleChange}
-            className="border rounded-lg p-3 w-full"
+            className="border rounded-lg p-3 w-full text-gray-500"
           />
 
           {/* Aadhar and PAN */}
           <div className="grid md:grid-cols-2 gap-4">
             <div>
               <label className="block font-medium mb-1">Aadhar Card</label>
-              <input type="file" className="border p-2 rounded-lg w-full" />
+              <input type="file" className="border p-2 rounded-lg w-full text-gray-500" />
             </div>
             <div>
               <label className="block font-medium mb-1">PAN Card</label>
-              <input type="file" className="border p-2 rounded-lg w-full" />
+              <input type="file" className="border p-2 rounded-lg w-full text-gray-500" />
             </div>
           </div>
 
@@ -160,7 +157,7 @@ export default function FundraiserForm() {
               placeholder="Start Date"
               value={formData.startDate}
               onChange={handleChange}
-              className="border rounded-lg p-3 w-full"
+              className="border rounded-lg p-3 w-full text-gray-500"
             />
             <input
               type="date"
@@ -168,39 +165,36 @@ export default function FundraiserForm() {
               placeholder="End Date"
               value={formData.endDate}
               onChange={handleChange}
-              className="border rounded-lg p-3 w-full"
+              className="border rounded-lg p-3 w-full text-gray-500"
             />
           </div>
 
           {/* Supporting Documents */}
           <div>
-            <label className="block font-medium mb-2">
-              Upload Supporting Documents
-            </label>
+            <label className="block font-medium mb-2">Upload Supporting Documents</label>
             <div className="grid md:grid-cols-2 gap-3">
-              <input type="file" className="border p-2 rounded-lg w-full" />
-              <input type="file" className="border p-2 rounded-lg w-full" />
+              <input type="file" className="border p-2 rounded-lg w-full text-gray-500" />
+              <input type="file" className="border p-2 rounded-lg w-full text-gray-500" />
             </div>
           </div>
 
           {/* Upload Video */}
           <div>
             <label className="block font-medium mb-2">Upload Video</label>
-            <input type="file" className="border p-2 rounded-lg w-full" />
+            <input type="file" className="border p-2 rounded-lg w-full text-gray-500" />
           </div>
 
-          {/* ✅ Fixed rows type (number) */}
           <textarea
             name="summary"
             placeholder="Fundraiser Summary"
             rows={4}
             value={formData.summary}
             onChange={handleChange}
-            className="border rounded-lg p-3 w-full"
+            className="border rounded-lg p-3 w-full text-gray-500"
           />
 
           {/* Submit Button */}
-          <div className="text-center ">
+          <div className="text-center">
             <button
               type="submit"
               className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-medium transition"
