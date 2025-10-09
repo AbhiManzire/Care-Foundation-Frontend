@@ -32,7 +32,7 @@ export default function RootLayout({
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body className="min-h-screen flex flex-col">
         {/*  Navigation bar */}
-        <FundraiserForm />
+        {/* <FundraiserForm /> */}
         {/* <AuthForm />  */}
         <NavBar />
 
