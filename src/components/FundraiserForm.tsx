@@ -1,5 +1,7 @@
 "use client";
+
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function FundraiserForm() {
   const [formData, setFormData] = useState({
@@ -30,15 +32,48 @@ export default function FundraiserForm() {
   };
 
   return (
-    <section className="bg-gray-50 py-12 text-gray-500">
-      <div className="max-w-4xl mx-auto px-6">
-        <h2 className="text-3xl font-semibold text-center text-gray-800 mb-8">
-          Start your fundraiser and make a difference today!
-        </h2>
+    <section className="relative bg-gray-50 overflow-hidden">
+      {/* 🌄 Hero Section with Realistic Background */}
+      <div className="relative min-h-[60vh] flex flex-col items-center justify-center p-8 text-center">
+        <div className="absolute inset-0">
+          <img
+            src="/images/main-slider/123.jpg"
+            alt="Fundraiser background"
+            className="object-cover w-full h-full scale-105 opacity-60 animate-slow-zoom"
+          />
+          {/* Dark overlay for readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
+        </div>
 
-        <form
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="relative z-10 text-4xl md:text-5xl font-extrabold text-white drop-shadow-lg"
+        >
+          Start your fundraiser and make a difference today!
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5, duration: 1 }}
+          className="relative z-10 mt-4 text-lg text-gray-200 max-w-2xl"
+        >
+          Empower change — raise funds for causes that matter. Let’s bring your
+          story to life.
+        </motion.p>
+      </div>
+
+      {/* 🧾 Form Section */}
+      <div className="max-w-5xl mx-auto px-6 py-16">
+        <motion.form
           onSubmit={handleSubmit}
-          className="bg-white p-8 rounded-2xl shadow-md space-y-6"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="bg-white/90 backdrop-blur-xl p-8 rounded-2xl shadow-2xl border border-gray-200 space-y-6"
         >
           {/* Row 1 */}
           <div className="grid md:grid-cols-2 gap-4">
@@ -48,7 +83,7 @@ export default function FundraiserForm() {
               placeholder="Full Name"
               value={formData.fullName}
               onChange={handleChange}
-              className="border rounded-lg p-3 w-full text-gray-500"
+              className="border rounded-lg p-3 w-full text-gray-700 focus:ring-2 focus:ring-green-400 outline-none transition"
             />
             <input
               type="email"
@@ -56,18 +91,18 @@ export default function FundraiserForm() {
               placeholder="Email Address"
               value={formData.email}
               onChange={handleChange}
-              className="border rounded-lg p-3 w-full text-gray-500"
+              className="border rounded-lg p-3 w-full text-gray-700 focus:ring-2 focus:ring-green-400 outline-none transition"
             />
           </div>
 
-          {/* Row 2 */}
+          {/* Fund Heading + Required Amount */}
           <input
             type="text"
             name="heading"
             placeholder="Fundraiser Heading"
             value={formData.heading}
             onChange={handleChange}
-            className="border rounded-lg p-3 w-full text-gray-500"
+            className="border rounded-lg p-3 w-full text-gray-700 focus:ring-2 focus:ring-green-400 outline-none transition"
           />
 
           <input
@@ -76,20 +111,24 @@ export default function FundraiserForm() {
             placeholder="Fund Required (in INR)"
             value={formData.fundRequired}
             onChange={handleChange}
-            className="border rounded-lg p-3 w-full text-gray-500"
+            className="border rounded-lg p-3 w-full text-gray-700 focus:ring-2 focus:ring-green-400 outline-none transition"
           />
 
           {/* Upload Pictures */}
           <div>
-            <label className="block font-medium mb-2">Upload Pictures</label>
+            <label className="block font-medium mb-2 text-gray-700">Upload Pictures</label>
             <div className="grid md:grid-cols-3 gap-3">
-              <input type="file" className="border p-2 rounded-lg w-full text-gray-500" />
-              <input type="file" className="border p-2 rounded-lg w-full text-gray-500" />
-              <input type="file" className="border p-2 rounded-lg w-full text-gray-500" />
+              {[1, 2, 3].map((i) => (
+                <input
+                  key={i}
+                  type="file"
+                  className="border p-2 rounded-lg w-full text-gray-600 hover:border-green-400 cursor-pointer transition"
+                />
+              ))}
             </div>
           </div>
 
-          {/* Creator info */}
+          {/* Creator Info */}
           <div className="grid md:grid-cols-2 gap-4">
             <input
               type="text"
@@ -97,7 +136,7 @@ export default function FundraiserForm() {
               placeholder="Creator's Name"
               value={formData.creatorName}
               onChange={handleChange}
-              className="border rounded-lg p-3 w-full text-gray-500"
+              className="border rounded-lg p-3 w-full text-gray-700 focus:ring-2 focus:ring-green-400 outline-none transition"
             />
             <input
               type="text"
@@ -105,10 +144,11 @@ export default function FundraiserForm() {
               placeholder="Mobile No."
               value={formData.mobile}
               onChange={handleChange}
-              className="border rounded-lg p-3 w-full text-gray-500"
+              className="border rounded-lg p-3 w-full text-gray-700 focus:ring-2 focus:ring-green-400 outline-none transition"
             />
           </div>
 
+          {/* City and State */}
           <div className="grid md:grid-cols-2 gap-4">
             <input
               type="text"
@@ -116,7 +156,7 @@ export default function FundraiserForm() {
               placeholder="City"
               value={formData.city}
               onChange={handleChange}
-              className="border rounded-lg p-3 w-full text-gray-500"
+              className="border rounded-lg p-3 w-full text-gray-700 focus:ring-2 focus:ring-green-400 outline-none transition"
             />
             <input
               type="text"
@@ -124,28 +164,35 @@ export default function FundraiserForm() {
               placeholder="State"
               value={formData.state}
               onChange={handleChange}
-              className="border rounded-lg p-3 w-full text-gray-500"
+              className="border rounded-lg p-3 w-full text-gray-700 focus:ring-2 focus:ring-green-400 outline-none transition"
             />
           </div>
 
+          {/* Address */}
           <textarea
             name="address"
             placeholder="Address"
             rows={2}
             value={formData.address}
             onChange={handleChange}
-            className="border rounded-lg p-3 w-full text-gray-500"
+            className="border rounded-lg p-3 w-full text-gray-700 focus:ring-2 focus:ring-green-400 outline-none transition"
           />
 
-          {/* Aadhar and PAN */}
+          {/* Documents */}
           <div className="grid md:grid-cols-2 gap-4">
             <div>
-              <label className="block font-medium mb-1">Aadhar Card</label>
-              <input type="file" className="border p-2 rounded-lg w-full text-gray-500" />
+              <label className="block font-medium mb-1 text-gray-700">Aadhar Card</label>
+              <input
+                type="file"
+                className="border p-2 rounded-lg w-full text-gray-600 hover:border-green-400 cursor-pointer transition"
+              />
             </div>
             <div>
-              <label className="block font-medium mb-1">PAN Card</label>
-              <input type="file" className="border p-2 rounded-lg w-full text-gray-500" />
+              <label className="block font-medium mb-1 text-gray-700">PAN Card</label>
+              <input
+                type="file"
+                className="border p-2 rounded-lg w-full text-gray-600 hover:border-green-400 cursor-pointer transition"
+              />
             </div>
           </div>
 
@@ -154,55 +201,64 @@ export default function FundraiserForm() {
             <input
               type="date"
               name="startDate"
-              placeholder="Start Date"
               value={formData.startDate}
               onChange={handleChange}
-              className="border rounded-lg p-3 w-full text-gray-500"
+              className="border rounded-lg p-3 w-full text-gray-700 focus:ring-2 focus:ring-green-400 outline-none transition"
             />
             <input
               type="date"
               name="endDate"
-              placeholder="End Date"
               value={formData.endDate}
               onChange={handleChange}
-              className="border rounded-lg p-3 w-full text-gray-500"
+              className="border rounded-lg p-3 w-full text-gray-700 focus:ring-2 focus:ring-green-400 outline-none transition"
             />
           </div>
 
-          {/* Supporting Documents */}
+          {/* Supporting Docs */}
           <div>
-            <label className="block font-medium mb-2">Upload Supporting Documents</label>
+            <label className="block font-medium mb-2 text-gray-700">Upload Supporting Documents</label>
             <div className="grid md:grid-cols-2 gap-3">
-              <input type="file" className="border p-2 rounded-lg w-full text-gray-500" />
-              <input type="file" className="border p-2 rounded-lg w-full text-gray-500" />
+              {[1, 2].map((i) => (
+                <input
+                  key={i}
+                  type="file"
+                  className="border p-2 rounded-lg w-full text-gray-600 hover:border-green-400 cursor-pointer transition"
+                />
+              ))}
             </div>
           </div>
 
           {/* Upload Video */}
           <div>
-            <label className="block font-medium mb-2">Upload Video</label>
-            <input type="file" className="border p-2 rounded-lg w-full text-gray-500" />
+            <label className="block font-medium mb-2 text-gray-700">Upload Video</label>
+            <input
+              type="file"
+              className="border p-2 rounded-lg w-full text-gray-600 hover:border-green-400 cursor-pointer transition"
+            />
           </div>
 
+          {/* Summary */}
           <textarea
             name="summary"
             placeholder="Fundraiser Summary"
             rows={4}
             value={formData.summary}
             onChange={handleChange}
-            className="border rounded-lg p-3 w-full text-gray-500"
+            className="border rounded-lg p-3 w-full text-gray-700 focus:ring-2 focus:ring-green-400 outline-none transition"
           />
 
-          {/* Submit Button */}
-          <div className="text-center">
-            <button
+          {/* Submit */}
+          <div className="text-center pt-4">
+            <motion.button
               type="submit"
-              className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-medium transition"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-medium transition shadow-lg"
             >
               Submit Fundraiser
-            </button>
+            </motion.button>
           </div>
-        </form>
+        </motion.form>
       </div>
     </section>
   );
