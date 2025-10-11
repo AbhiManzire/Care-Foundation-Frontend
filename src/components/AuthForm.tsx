@@ -9,7 +9,10 @@ export default function AuthForm() {
 
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const [registerData, setRegisterData] = useState({
-    fullName: "",
+    firstName: "",
+    lastName: "",
+    panCard: "",
+    mobileNumber: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -63,7 +66,7 @@ export default function AuthForm() {
 
       {/* Form Container */}
       <div className="relative z-10 flex flex-col md:flex-row w-full max-w-5xl shadow-2xl rounded-3xl overflow-hidden bg-white/90 backdrop-blur-lg">
-        
+
         {/* Left Image / Illustration */}
         <div className="hidden md:block md:w-1/2 relative">
           <Image
@@ -88,17 +91,16 @@ export default function AuthForm() {
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab as any)}
-                className={`py-2 px-4 font-medium border-b-2 transition ${
-                  activeTab === tab
+                className={`py-2 px-4 font-medium border-b-2 transition ${activeTab === tab
                     ? "border-green-600 text-green-600"
                     : "border-transparent text-gray-500 hover:text-green-500"
-                }`}
+                  }`}
               >
                 {tab === "login"
                   ? "Login"
                   : tab === "register"
-                  ? "Create Account"
-                  : "Forgot Password"}
+                    ? "Create Account"
+                    : "Forgot Password"}
               </button>
             ))}
           </div>
@@ -150,13 +152,49 @@ export default function AuthForm() {
             >
               <input
                 type="text"
-                name="fullName"
-                placeholder="Full Name"
-                value={registerData.fullName}
+                name="First Name"
+                placeholder="First Name"
+                value={registerData.firstName}
                 onChange={handleRegisterChange}
                 className="w-full p-3 border rounded-lg text-gray-700 focus:ring-2 focus:ring-green-400 outline-none transition duration-300 hover:scale-105"
                 required
               />
+
+              <input
+                type="text"
+                name="Last Name"
+                placeholder="Last Name"
+                value={registerData.lastName}
+                onChange={handleRegisterChange}
+                className="w-full p-3 border rounded-lg text-gray-700 focus:ring-2 focus:ring-green-400 outline-none transition duration-300 hover:scale-105"
+                required
+              />
+
+              <input
+                type="text"
+                name="panCard"
+                placeholder="PAN Card Number (e.g. ABCDE1234F)"
+                value={registerData.panCard}
+                onChange={handleRegisterChange}
+                className="w-full p-3 border rounded-lg text-gray-700 focus:ring-2 focus:ring-green-400 outline-none transition duration-300 hover:scale-105"
+                pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}"
+                title="Enter valid PAN format: 5 letters, 4 digits, 1 letter (e.g. ABCDE1234F)"
+                required
+              />
+
+              <input
+                type="tel"
+                name="mobileNumber"
+                placeholder="Mobile Number"
+                value={registerData.mobileNumber}
+                onChange={handleRegisterChange}
+                className="w-full p-3 border rounded-lg text-gray-700 focus:ring-2 focus:ring-green-400 outline-none transition duration-300 hover:scale-105"
+                pattern="[0-9]{10}"
+                title="Enter a 10-digit mobile number"
+                maxLength={10}
+                required
+              />
+
               <input
                 type="email"
                 name="email"

@@ -7,6 +7,9 @@ import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import AuthForm from "@/components/AuthForm";
 import FundraiserForm from "@/components/FundraiserForm";
+import StartFundraiser from "@/components/StartFundraiser";
+import FundRaised from "@/components/FundRaised";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,9 +34,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body className="min-h-screen flex flex-col">
-        {/*  Navigation bar */}
+         {/* Navigation bar */}
         <FundraiserForm />
         <AuthForm /> 
+        <StartFundraiser />
+        <FundRaised />
+
         <NavBar />
 
         {/*  Page content */}
